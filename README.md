@@ -5,7 +5,8 @@ Used google's firebase for data solution.
 
 Jest used for test cases's.
 <br> <br>
+npm install to install dependencies<br>
 To deploy firebase emulator -> npm deploy:dev<br>
 To run test cases -> npm run testscript<br>
-<br><br><br>
+<br><br>
 Also contain's postman collection for documentation and testing.
