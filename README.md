@@ -7,3 +7,5 @@ Jest used for test cases's.
 <br> <br>
 To deploy firebase emulator -> npm deploy:dev<br>
 To run test cases -> npm run testscript<br>
+<br><br><br>
+Also contain's postman collection for documentation and testing.
