@@ -4,6 +4,6 @@ Mock implementation of Login through access/refresh tokens, written in typescrip
 Used google's firebase for data solution. 
 
 Jest used for test cases's.
-
-To deploy firebase emulator -> npm deploy:dev
-To run test cases -> npm run testscript
+<br> <br>
+To deploy firebase emulator -> npm deploy:dev<br>
+To run test cases -> npm run testscript<br>
