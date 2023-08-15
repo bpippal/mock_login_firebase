@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "fa06a15c-2b3d-47f3-91f2-143522b9bc6f",
+		"name": "Account activities (Firebase)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29128016"
+	},
+	"item": [
+		{
+			"name": "Register Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"bpippal@gmail.com\",\n    \"password\" : \"bharat\",\n    \"name\" : \"Bharat\",\n    \"phone\" : \"9972608051\",\n    \"address\" : \"Hyderabad\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/willeder-4532a/asia-northeast1/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"willeder-4532a",
+						"asia-northeast1",
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "Create's a user account with unique email id. If email id already exists, throw's an exception."
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"bpippal@gmail.com\",\n    \"password\" : \"Bharat\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/willeder-4532a/asia-northeast1/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"willeder-4532a",
+						"asia-northeast1",
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Generate's accesstoken and refreshtoken if credentials are authenticated.\n\nAccesstoken is used as authorization in header's for sub-sequent requests."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiMTA5NmZlLWRiNjQtNDg0Yi04ZDhhLWRlODllY2M3NjNhMSIsIm5hbWUiOiJCaGFyYXQiLCJpYXQiOjE2OTE5NDUyMTYsImV4cCI6MTY5MTk0NTI3Nn0.Ubz2BIjEZrM5L63vRrBG_dFz-sNq-G6cZrxQmENEXHs",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5001/willeder-4532a/asia-northeast1/api/account",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"willeder-4532a",
+						"asia-northeast1",
+						"api",
+						"account"
+					]
+				},
+				"description": "Fetches user account details, user id is fetched from the token and a DB call is made to get complete details."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Account",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNGFmYjFmLTQzNWEtNDBiMy05MTFjLTVlYTAyMjYxNDUzOSIsImlhdCI6MTY5MTkwODI1NH0.Gob5jfEQUT5lLaWFnx5ip8AXipdEjsEA3vSzs4U45qo",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\" : \"newAddress\" , \n    \"phone\" : \"newPhone\" , \n    \"email\" : \"newEmail\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/willeder-4532a/asia-northeast1/api/account/update",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"willeder-4532a",
+						"asia-northeast1",
+						"api",
+						"account",
+						"update"
+					]
+				},
+				"description": "Update's account related info."
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refreshToken\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiMTA5NmZlLWRiNjQtNDg0Yi04ZDhhLWRlODllY2M3NjNhMSIsImlhdCI6MTY5MTk0NDI1NywiZXhwIjoxNjkxOTQ0Mzc3fQ.wSwPgL4JYjaL9B84w5av7h4h7TaGmorZKvJENTJQcvo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/willeder-4532a/asia-northeast1/api/auth/refresh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"willeder-4532a",
+						"asia-northeast1",
+						"api",
+						"auth",
+						"refresh"
+					]
+				},
+				"description": "Used to refresh the token by passing the refreshToken."
+			},
+			"response": []
+		}
+	]
+}

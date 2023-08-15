@@ -8,8 +8,8 @@ import { checkValidation } from '../../../utils/validation';
 
 const router = express.Router();
 
-router.put('', checkSchema(ACCOUNT_SCHEMA), checkValidation, controller.updateAccount);
+router.put('/update', checkSchema(ACCOUNT_SCHEMA), checkValidation, controller.updateAccount);
 router.put('/password', checkSchema(ACCOUNT_PASSWORD_SCHEMA), checkValidation, controller.updatePassword);
-router.get('', controller.getAccountInfo);
+router.get('/', controller.getAccountInfo);
 
 export default router;

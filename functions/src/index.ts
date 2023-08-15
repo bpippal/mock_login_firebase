@@ -18,7 +18,10 @@ app.use(cookieParser(COOKIE_SECRET));
 app.use(express.urlencoded({ extended: true }));
 
 registerComponents(app);
-
+app.all("*" , (req, res) => {
+    res.status(404).send("Route not exists");
+})
 errorHandler(app);
 
 module.exports.api = functions.region('asia-northeast1').https.onRequest(app);
+module.exports.expressApp = app; 

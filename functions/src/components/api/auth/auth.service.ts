@@ -13,11 +13,33 @@ import { getAddToCurrentJST, getCurrentJST } from '../../../utils/dayjs';
 import { TokenDocument } from '../../../models/token/token.entity';
 import { addToken, deleteToken, getToken } from '../../../models/token';
 import { MESSAGE_RESET_PASSWORD } from './auth.message';
-// import { addUser, getUserByEmail, updateUserFields } from '../../../models/user';
-// import { UserDocument } from '../../../models/user/user.entity';
+import { addUser , updateUserFields} from '../../../models/user';
+import { UserDocument } from '../../../models/user/user.entity';
 
 export const createUser = async (email: string, password: string, name: string, phone: string, address: string) => {
   // TODO
+  try {
+    let hashedPassword = hashPassword(password);
+    let userBody : UserDocument = {
+      user_id : uuidv4(),
+      status : "inactive",
+      password : hashedPassword,
+      email ,
+      name , 
+      phone , 
+      address,
+      created_at : getCurrentJST() , 
+      updated_at : getCurrentJST() , 
+      deleted_at : null,
+      refresh_token : null,
+    };
+
+    await addUser(userBody);
+
+  } catch (error) {
+    logger.warn(error);
+    return Promise.reject(error);
+  }
 };
 
 export const forgotPassword = async (user: UserDocument) => {
@@ -55,7 +77,7 @@ export const updatePassword = async (password: string, tokenId: string) => {
     if (token.token_type !== 'resetPassword') throw invalidException('Token is not valid token type');
 
     // TODO
-    // await updateUserFields(token.user_id, { password: hashPassword(password), updated_at: getCurrentJST() });
+    await updateUserFields(token.user_id, { password: hashPassword(password), updated_at: getCurrentJST() });
 
     await deleteToken(tokenId);
 

@@ -1,7 +1,9 @@
 {
   "projects": {
     "default": "",
-    "dev": "",
+    "dev": "willeder-4532a",
     "prod": ""
-  }
+  },
+  "targets": {},
+  "etags": {}
 }

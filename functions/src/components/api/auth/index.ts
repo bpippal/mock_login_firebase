@@ -20,6 +20,7 @@ router.put('/login', checkSchema(LOGIN_SCHEMA), checkValidation, controller.logi
 router.put('/logout', isAuth, controller.logout);
 router.put('/password/forgot', checkSchema(FORGOT_PASSWORD_SCHEMA), checkValidation, controller.forgotPassword);
 router.put('/password/reset', checkSchema(UPDATE_PASSWORD_SCHEMA), checkValidation, controller.updatePassword);
-router.post('/refresh', checkSchema(REFRESH_TOKEN_SCHEMA), checkValidation, controller.refresh);
+// router.post('/refresh', checkSchema(REFRESH_TOKEN_SCHEMA), checkValidation, controller.refresh);
+router.post('/refresh',  controller.refresh);
 
 export default router;
